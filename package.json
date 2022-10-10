@@ -1,4 +1,9 @@
 {
+  "author": {
+    "name": "Roberto Ruiz",
+    "url": "https://robruizr.dev"
+  },
+  "description": "Example that uses Appwrite for user authentication and authorization.",
   "private": true,
   "scripts": {
     "dev": "next",
