@@ -1,9 +1,9 @@
 import Nav from '../nav';
 
-export default function Layout({ user, setUser, children }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="container mx-auto">
-      <Nav user={user} setUser={setUser} />
+      <Nav />
       {children}
     </div>
   );

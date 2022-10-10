@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { UserContextProvider } from '../components';
 import Layout from '../components/layout';
 
 import '../styles/index.css';
 
 function MyApp({ Component, pageProps }) {
-  const [user, setUser] = useState();
-
   return (
-    <Layout user={user} setUser={setUser}>
-      <Component user={user} {...pageProps} />
-    </Layout>
+    <UserContextProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </UserContextProvider>
   );
 }
 

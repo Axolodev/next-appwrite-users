@@ -1,4 +1,8 @@
-function Index({ user }) {
+import { useUser } from '../hooks';
+
+function Index() {
+  const { user } = useUser();
+
   if (user) {
     return (
       <div className="w-4/5 md:w-1/2 mx-auto">
