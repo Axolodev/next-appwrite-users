@@ -1,14 +1,15 @@
 import { useState } from 'react';
+import type { UserLoginInfo } from '../../types';
 import InputField from '../InputField';
 import FormButton from './FormButton';
 
 interface LoginModalParams {
   modalType: 'login' | 'signup';
-  submitHandler: (username: string, password: string) => Promise<void>;
+  submitHandler: (input: UserLoginInfo) => Promise<void>;
 }
 
 function LoginModal({ modalType, submitHandler }: LoginModalParams) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -16,25 +17,26 @@ function LoginModal({ modalType, submitHandler }: LoginModalParams) {
   const isSignup = modalType === 'signup';
 
   async function userCallHandler(e: React.FormEvent) {
-    e.preventDefault();
     setLoading(true);
     try {
-      submitHandler(username, password);
+      submitHandler({ email, password });
       setLoading(false);
     } catch (e) {
       setLoading(false);
       setError(e.message);
     }
+    e.preventDefault();
   }
 
   return (
     <form className="bg-white shadow-md rounded p-8">
       <InputField
-        changeHandler={(e) => setUsername(e.target.value)}
-        id="username"
-        label="Username"
-        placeholder="Username"
-        value={username}
+        changeHandler={(e) => setEmail(e.target.value)}
+        id="email"
+        label="Email"
+        placeholder="Email"
+        value={email}
+        type="email"
       />
       <InputField
         changeHandler={(e) => setPassword(e.target.value)}

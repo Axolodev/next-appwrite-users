@@ -1,11 +1,15 @@
-import { logout } from '../../utils';
+import { useUser } from '../../hooks';
 
-const LoggedInView = () => (
-  <li>
-    <button className="font-bold" onClick={logout}>
-      Log Out
-    </button>
-  </li>
-);
+const LoggedInView = () => {
+  const { logout } = useUser();
+
+  return (
+    <li>
+      <button className="font-bold" onClick={logout}>
+        Log Out
+      </button>
+    </li>
+  );
+};
 
 export default LoggedInView;

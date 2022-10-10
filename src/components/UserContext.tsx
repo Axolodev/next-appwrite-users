@@ -1,9 +1,10 @@
 import React from 'react';
-import { User } from '../types';
+import type { Models } from 'appwrite';
 
+type UserAccount = Models.Account<Models.Preferences>;
 export interface UserContextType {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: UserAccount | null;
+  setUser: (user: UserAccount | null) => void;
 }
 
 export const UserContext = React.createContext<UserContextType>({
@@ -12,7 +13,7 @@ export const UserContext = React.createContext<UserContextType>({
 });
 
 export default ({ children }) => {
-  const [user, setUser] = React.useState<User>(null);
+  const [user, setUser] = React.useState<UserAccount>(null);
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

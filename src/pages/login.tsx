@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { UserForm } from '../components';
+import { useUser } from '../hooks';
 
 export default function Login() {
-  const submitHandler = async (username: string, password: string) => {
-    console.log(username, password);
+  const { login } = useUser();
+
+  const submitHandler = async ({ email, password }) => {
+    try {
+      await login({ email, password });
+    } catch (exception) {}
   };
 
   return (
