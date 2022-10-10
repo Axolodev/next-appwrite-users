@@ -1,5 +1,5 @@
-import * as React from "react";
-import { UserForm } from "../components";
+import * as React from 'react';
+import { UserForm } from '../components';
 
 export default function Login() {
   const submitHandler = async (username: string, password: string) => {

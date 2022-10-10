@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Layout from "../components/layout";
+import { useState } from 'react';
+import Layout from '../components/layout';
 
-import "../styles/index.css";
+import '../styles/index.css';
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();

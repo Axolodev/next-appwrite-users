@@ -1,4 +1,4 @@
-import { logout } from "../../utils";
+import { logout } from '../../utils';
 
 const LoggedInView = () => (
   <li>

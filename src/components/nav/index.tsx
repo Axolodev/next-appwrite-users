@@ -1,6 +1,6 @@
-import * as React from "react";
-import LoggedInView from "./LoggedInView";
-import LoggedOutView from "./LogedOutView";
+import * as React from 'react';
+import LoggedInView from './LoggedInView';
+import LoggedOutView from './LogedOutView';
 
 export default function Nav({ user }) {
   return (

@@ -1,19 +1,19 @@
-import { useState } from "react";
-import InputField from "../InputField";
-import FormButton from "./FormButton";
+import { useState } from 'react';
+import InputField from '../InputField';
+import FormButton from './FormButton';
 
 interface LoginModalParams {
-  modalType: "login" | "signup";
+  modalType: 'login' | 'signup';
   submitHandler: (username: string, password: string) => Promise<void>;
 }
 
 function LoginModal({ modalType, submitHandler }: LoginModalParams) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
-  const isSignup = modalType === "signup";
+  const isSignup = modalType === 'signup';
 
   async function userCallHandler(e: React.FormEvent) {
     e.preventDefault();
@@ -49,7 +49,7 @@ function LoginModal({ modalType, submitHandler }: LoginModalParams) {
         <FormButton
           loading={loading}
           handler={userCallHandler}
-          defaultLabel={isSignup ? "Sign Up" : "Log In"}
+          defaultLabel={isSignup ? 'Sign Up' : 'Log In'}
           loadingLabel="Loading..."
         />
       </div>

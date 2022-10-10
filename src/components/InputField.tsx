@@ -11,7 +11,7 @@ const InputField = ({
   id,
   placeholder,
   changeHandler,
-  type = "text",
+  type = 'text',
   label,
   value,
 }: InputFieldProps) => (
