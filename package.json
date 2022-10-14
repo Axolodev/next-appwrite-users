@@ -1,34 +1,25 @@
 {
-  "author": {
-    "name": "Roberto Ruiz",
-    "url": "https://robruizr.dev"
-  },
+  "name": "next-appwrite-app",
+  "version": "1.0.0",
   "description": "Example that uses Appwrite for user authentication and authorization.",
+  "main": "index.js",
+  "repository": "git@github.com:RobRuizR/next-appwrite-users.git",
+  "author": "Roberto Ruiz",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
   "private": true,
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "prepare": "husky install"
-  },
-  "dependencies": {
-    "appwrite": "^10.1.0",
-    "cors": "^2.8.5",
-    "next": "latest",
-    "node-appwrite": "^8.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "userbase-js": "^1.3.0"
-  },
   "devDependencies": {
-    "@types/node": "18.8.3",
-    "@types/react": "18.0.21",
-    "autoprefixer": "^10.2.6",
     "husky": "^8.0.0",
-    "postcss": "^8.3.5",
     "prettier": "^2.7.1",
-    "pretty-quick": "^3.1.3",
-    "tailwindcss": "^2.2.4",
-    "typescript": "4.8.4"
+    "pretty-quick": "^3.1.3"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "functions-compile": "cd packages/functions && tsc",
+    "functions-prepare-env": "cd packages/functions && copy .env dist",
+    "functions-prepare-package": "cd packages/functions && copy package.json dist",
+    "functions-prepare": "npm run functions-compile && npm run functions-prepare-env && npm run functions-prepare-package"
   }
 }

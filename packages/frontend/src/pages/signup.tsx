@@ -12,7 +12,9 @@ export default function Login() {
         body: JSON.stringify({ email, password }),
       });
       await login({ email, password });
-    } catch (exception) {}
+    } catch (exception) {
+      console.error(exception);
+    }
   };
 
   return (
