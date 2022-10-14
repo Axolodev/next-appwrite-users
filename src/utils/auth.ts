@@ -5,7 +5,7 @@ import appwriteClient from './appwriteClient';
 const accountClient = new Account(appwriteClient);
 
 export const createAccount = async ({ email, password }: UserLoginInfo) =>
-  accountClient.create(ID.unique(), email, password);
+  accountClient.create(ID.unique(), email, password, 'Placeholder Name');
 
 export const createUserSession = async ({ email, password }: UserLoginInfo) =>
   accountClient.createEmailSession(email, password);

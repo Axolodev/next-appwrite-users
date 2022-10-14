@@ -2,16 +2,22 @@ import Head from 'next/head';
 import * as React from 'react';
 import { UserForm } from '../components';
 import { useUser } from '../hooks';
+import { createAccount } from '../utils/auth';
 
 export default function Login() {
   const { login } = useUser();
 
   const submitHandler = async ({ email, password }) => {
+    if (!email || !password) return;
+
     try {
-      await fetch('/api/users/new', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-      });
+      await createAccount({ email, password });
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+
+    try {
       await login({ email, password });
     } catch (exception) {
       console.error(exception);
