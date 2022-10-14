@@ -8,6 +8,7 @@ async function getAllUsers<T>(url: string): Promise<T> {
     },
   });
   const data: T = await response.json();
+
   return data;
 }
 

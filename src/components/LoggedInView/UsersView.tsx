@@ -1,7 +1,6 @@
-import { get } from '../../utils';
-import useSWR from 'swr';
 import Link from 'next/link';
-import { APIResponses, User } from '../../types';
+import type { APIResponses } from '../../types';
+import { useGet } from '../../hooks';
 
 const TD = ({ children }) => (
   <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
@@ -16,14 +15,17 @@ const TH = ({ children }) => (
 );
 
 const UsersView = () => {
-  const { data, error } = useSWR<APIResponses.User.All>(
-    '/api/users/all',
-    get<{ users: User[] }>
-  );
+  const { data, error } = useGet<APIResponses.User.All>('/api/users/all');
 
   if (error) return <div className="p-3">Failed to load</div>;
 
   if (!data) return <div className="p-3">Loading...</div>;
+
+  if ((data as APIResponses.Error)?.message) {
+    return <div />;
+  }
+
+  const { users } = data as APIResponses.User.All;
 
   return (
     <table className="border-collapse table-auto w-full text-sm">
@@ -35,7 +37,7 @@ const UsersView = () => {
         </tr>
       </thead>
       <tbody className="bg-white dark:bg-slate-800">
-        {data.users?.map((user) => (
+        {users?.map((user) => (
           <tr key={user.id}>
             <TD>{user.email}</TD>
             <TD>{user.name}</TD>
