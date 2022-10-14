@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sdk from 'node-appwrite';
-import { checkIsAdmin } from '../../apiHelpers';
-import { environment } from '../../utils';
+import { checkIsAdmin } from '../../../apiHelpers';
+import { environment } from '../../../utils';
 
 // Client that gets the Users collection
 const apiClient = new sdk.Client();
