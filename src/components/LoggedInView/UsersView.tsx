@@ -1,7 +1,7 @@
 import { get } from '../../utils';
 import useSWR from 'swr';
 import Link from 'next/link';
-import { User } from '../../types';
+import { APIResponses, User } from '../../types';
 
 const TD = ({ children }) => (
   <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
@@ -16,7 +16,10 @@ const TH = ({ children }) => (
 );
 
 const UsersView = () => {
-  const { data, error } = useSWR('/api/users/all', get<{ users: User[] }>);
+  const { data, error } = useSWR<APIResponses.User.All>(
+    '/api/users/all',
+    get<{ users: User[] }>
+  );
 
   if (error) return <div className="p-3">Failed to load</div>;
 

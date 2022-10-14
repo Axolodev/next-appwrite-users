@@ -1,23 +1,11 @@
-import { environment } from '../utils';
 import sdk from 'node-appwrite';
 import { NextApiRequest } from 'next';
-
-// Client that verifies whether user has access to the Users collection
-const jwtClient = new sdk.Client();
+import getJWTClient from './getJWTClient';
 
 const ADMIN_ROLE_ID = process.env.ADMIN_TEAM_ID;
 
-jwtClient
-  .setEndpoint(`${environment.hostname}/v1`)
-  .setProject(environment.projectId);
-
 async function checkIsAdmin(req: NextApiRequest) {
-  const { headers } = req;
-  const { authorization } = headers;
-
-  // Get JWT from request
-  const jwt = authorization?.replace('Bearer ', '') || '';
-  jwtClient.setJWT(jwt);
+  const jwtClient = getJWTClient(req);
 
   // Check if user belongs to admin team
   const teams = new sdk.Teams(jwtClient);

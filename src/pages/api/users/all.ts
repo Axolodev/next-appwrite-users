@@ -1,18 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sdk from 'node-appwrite';
-import { checkIsAdmin } from '../../../apiHelpers';
-import { environment } from '../../../utils';
-
-// Client that gets the Users collection
-const apiClient = new sdk.Client();
-apiClient
-  .setEndpoint(`${environment.hostname}/v1`)
-  .setProject(environment.projectId)
-  .setKey(process.env.APPWRITE_SECRET_API_KEY);
+import { apiClient, checkIsAdmin } from '../../../apiHelpers';
+import type { APIResponses } from '../../../types';
 
 export default async function getUsers(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<APIResponses.User.All | APIResponses.Error>
 ) {
   const isAdmin = await checkIsAdmin(req);
 
@@ -36,6 +29,6 @@ export default async function getUsers(
     res.status(200).json({ users: mappedUsersList });
   } catch (exception) {
     console.error('Error on getUsers', exception);
-    res.status(exception.code).send({ error: exception });
+    res.status(exception.code).send({ message: exception });
   }
 }
