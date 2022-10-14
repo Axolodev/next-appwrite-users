@@ -1,0 +1,12 @@
+{
+  "name": "next-appwrite-functions",
+  "version": "0.0.1",
+  "dependencies": {
+    "copy": "^0.3.2",
+    "dotenv": "^16.0.3",
+    "node-appwrite": "^8.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
