@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useUser } from '../../hooks';
 
 const LoggedInView = () => {
@@ -5,6 +6,12 @@ const LoggedInView = () => {
 
   return (
     <li>
+      <Link href="/">
+        <a className="text-blue-500 hover:text-blue-600 p-4">View User List</a>
+      </Link>
+      <Link href="/user/me">
+        <a className="text-blue-500 hover:text-blue-600 p-4">My Profile</a>
+      </Link>
       <button className="font-bold" onClick={logout}>
         Log Out
       </button>
