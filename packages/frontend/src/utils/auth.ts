@@ -13,3 +13,5 @@ export const createUserSession = async ({ email, password }: UserLoginInfo) =>
 export const getAccount = () => accountClient.get();
 
 export const logout = () => accountClient.deleteSession('current');
+
+export const getJWT = () => accountClient.createJWT();
