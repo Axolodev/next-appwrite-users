@@ -49,3 +49,9 @@ yarn dev
 ## Support
 
 If you need help with this app or found a bug, you can submit an issue on the Issues tab or by messaging me on Twitter [@Axolodev](twitter.com/axolodev)
+
+## Screenshots
+
+![Simple login page with email and password fields](/gitAssets/app_screenshot-1.png)
+![User list on the home page. Every user has their name, email, and a link to their profile page.](/gitAssets/app_screenshot-2.png)
+![Very simple user profile. Just the user's name, email, and their first initial](/gitAssets/app_screenshot-3.png)
