@@ -48,7 +48,7 @@ yarn dev
 
 ## Support
 
-If you need help with this app or found a bug, you can submit an issue on the Issues tab or by messaging me on Twitter [@Axolodev](twitter.com/axolodev)
+If you need help with this app or found a bug, you can submit an issue on the Issues tab or by messaging me on Twitter [@Axolodev](https://twitter.com/axolodev)
 
 ## Screenshots
 
